@@ -1,0 +1,181 @@
+<Manager>:
+    id: screen_manager
+    Registration:
+        name: 'screen1'
+        manager: screen_manager
+        id: registration
+    Screen:
+        name: 'screen2'
+        manager: screen_manager
+        NavigationLayout:
+
+            ScreenManager:
+
+                Screen:
+
+                    BoxLayout:
+                        orientation: 'vertical'
+
+                        MDToolbar:
+                            title: "Navigation Drawer"
+                            elevation: 10
+                            left_action_items: [['menu', lambda x: nav_drawer.toggle_nav_drawer()]]
+
+
+                        MDLabel:
+                            text: 'First screen'
+                        Game:
+
+                        Widget:
+
+
+            MDNavigationDrawer:
+                id: nav_drawer
+                ContentNavigationDrawer:
+                    id: content_drawer
+
+<Registration>:
+    hostname: hostname
+    login: login
+    passw: passw
+    erros_label: erros_label
+    BoxLayout:
+        orientation: "vertical"
+        spacing: dp(10)
+
+        canvas:
+            Rectangle:
+                pos: self.pos
+                size: self.size
+#                source: "demos/kitchen_sink/assets/crop-blur.jpg"
+                source: "img/textures.jpeg"
+
+        Image:
+#            source: "demos/kitchen_sink/assets/twitter-red.png"
+
+            source: "img/logo2.png"
+            size_hint: None, None
+            size: dp(60), dp(60)
+            pos_hint: {"center_x": .5}
+
+        Label:
+            text: "Registration"
+            size_hint_y: None
+            height: self.texture_size[1]
+            font_size: "20sp"
+            bold: True
+
+        Widget:
+            size_hint_y: None
+            height: dp(10)
+
+        MDTextField:
+            id: hostname
+            max_text_length: 30
+            required: True
+            mode: "rectangle"
+#            color_mode: 'accent'
+            hint_text: "IP адресс или доменное имя"
+#            text_color: [1,0,0,1]
+            size_hint: None, None
+            size: root.width - dp(40), dp(30)
+            pos_hint: {"center_x": .5}
+            helper_text: "This will disappear when you click off"
+            helper_text_mode: "on_focus"
+
+
+#            hint_text: "color_mode = 'custom'"
+#            color_mode: 'custom'
+#            helper_text_mode: "on_focus"
+#            helper_text: "Color is defined by 'line_color_focus' property"
+#            line_color_focus: 1, 1, 1, 1
+#            font_color: 1,0,1,1
+
+        MDTextField:
+            id: login
+
+            required: True
+            mode: "rectangle"
+            hint_text: "Логин"
+            size_hint: None, None
+            size: root.width - dp(40), dp(30)
+
+            line_color_text: 1, 0.5, 0.5, 1
+            pos_hint: {"center_x": .5}
+        MDTextField
+            required: True
+            mode: "rectangle"
+            id: passw
+            password: True
+
+            hint_text: "Пароль"
+            size_hint: None, None
+            size: root.width - dp(40), dp(30)
+            pos_hint: {"center_x": .5}
+#        Label:
+#            id: erros_label
+#            text: ""
+#            size_hint_y: None
+#            height: self.texture_size[1]
+
+        Widget:
+            size_hint_y: None
+            height: dp(20)
+
+        Label:
+            id: erros_label
+
+            color: 0,0,1,1
+            text: "Введите адрес или ip, логин и пароль."
+            size_hint_y: None
+            height: self.texture_size[1]
+
+        AnchorLayout:
+            anchor_y: "bottom"
+            padding: dp(10)
+
+            MDRoundFlatButton:
+                text: "Connect"
+                pos_hint: {"center_x": .5}
+                on_release:
+#                    root.manager.current = 'screen2'
+                    root.test2()
+#                    root.connect()
+
+<ContentNavigationDrawer>:
+    orientation: "vertical"
+    padding: "8dp"
+    spacing: "8dp"
+
+    AnchorLayout:
+        anchor_x: "left"
+        size_hint_y: None
+        height: avatar.height
+
+        Image:
+            id: avatar
+            size_hint: None, None
+            size: "56dp", "56dp"
+            source: "data/logo/kivy-icon-256.png"
+
+    MDLabel:
+        text: "Вестимый Андрей"
+        font_style: "Button"
+        size_hint_y: None
+        height: self.texture_size[1]
+
+    MDLabel:
+        text: "vestimyandrey@gmail.com"
+        font_style: "Caption"
+        size_hint_y: None
+        height: self.texture_size[1]
+
+    ScrollView:
+        DrawerList:
+            id: md_list``
+
+
+<Game>:
+    Label:
+        text: 'Hello'
+
